@@ -1,4 +1,5 @@
 import download as dw
+import files
 from pytube import Playlist
 
 print("-"*30)
@@ -6,6 +7,11 @@ print("Youtube Audio Downloader")
 print("-"*30)
 URL = str(input("Type the URL of the video/playlist: "))
 print("-"*30)
+print("")
+print("Creating Folder structure if not existent...")
+files.create_folder_structure()
+print("Folder Structure Ready!!")
+print("")
 
 if "playlist" in URL:
 
@@ -17,3 +23,5 @@ if "playlist" in URL:
 
 else:
     dw.mp3(URL)
+
+files.deletetmpfiles()

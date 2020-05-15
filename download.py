@@ -4,6 +4,7 @@ import time
 from moviepy.editor import *
 import eyed3
 import requests
+import files
 
 special_char = "~#%&{*}\\:<>?/+|\""
 
@@ -15,6 +16,7 @@ def mp3(URL):
 
     audio = VideoFileClip(os.getcwd()+"/tmp/"+"video.mp4")
     audio.audio.write_audiofile(os.getcwd()+"/tmp/"+"audio.mp3")
+    audio.close()
 
     os.rename(os.getcwd()+"/tmp/"+"audio.mp3",os.getcwd()+"/tmp/"+ stream.default_filename[:-4] +".mp3")
     
@@ -24,11 +26,11 @@ def mp3(URL):
 
     thumb = video.thumbnail_url
     thumb = requests.get(thumb)
-    with open("cover.jpg", "wb") as f:
+    with open("tmp/cover.jpg", "wb") as f:
         f.write(thumb.content)
 
 
-    audio.tag.images.set(3, open('cover.jpg','rb').read(), 'image/jpeg')
+    audio.tag.images.set(3, open('./tmp/cover.jpg','rb').read(), 'image/jpeg')
     print("writting Data...")
     audio.tag.save()
 
