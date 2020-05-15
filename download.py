@@ -1,7 +1,7 @@
 from pytube import YouTube
 import os
 import time
-from moviepy.editor import *
+from moviepy.editor import VideoFileClip
 import eyed3
 import requests
 import files
