@@ -32,6 +32,7 @@ def mp3(URL):
     print("writting Data...")
     audio.tag.images.set(3, open('./tmp/cover.jpg','rb').read(), 'image/jpeg')
     audio.tag.artist=video.author
+    audio.tag.title=video.title
 
     audio.tag.save()
 
